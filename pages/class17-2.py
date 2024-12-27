@@ -1,5 +1,5 @@
 import streamlit as st
-
+import os
 st.title("這是標題")
 st.write(
     "這是一個用 st.write 寫的字串,可以處理多種格式,例如:數字,文字,Markdown,數據框等"
@@ -20,21 +20,20 @@ st.markdown(
 with st.expander("點擊展開/收起"):
     st.markdown("""
     這是展開元件內部""")
-number= st.number_input("請輸入數字",step=1)
-st.markdown(f"你輸入的數字是:{number}")
-text=st.text_input("請輸入文字")
-st.markdown(f"你輸入的文字是:{text}")
-if st.button("點我"):
-    st.balloons()
-col1,col2=st.columns(2)
-col1.button("按鈕1",key="btn1")
-col2.button("按鈕2",key="btn2")
 
-col1,col2=st.columns([1,2])
-col1.button("按鈕1",key="btn3")
-col2.button("按鈕2",key="btn4")
+image_folder="image"
+image_files=os.listdir(image_folder)
+st.write(image_files)
 
-col1,col2,col3=st.columns([1,2,3])
-col1.button("按鈕1",key="btn5")
-col2.button("按鈕2",key="btn6")
-col3.button("按鈕3",key="btn7")
+png=st.selectbox("圖片設定",["0.png","1.png","2.png"])
+width=st.selectbox("寬",["300","310","320","330","340","350","360","370","380","390","400"])
+if png=="0.png":
+    st.image("image/0.png",width=300)
+elif png=="1.png":
+    st.image("image/1.png",width=300)
+else:    
+    st.image("image/2.png",width=300)
+
+st.title("圖片元件")
+st.image("image/0.png",width=300)
+
