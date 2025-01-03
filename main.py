@@ -1,3 +1,5 @@
 import streamlit as st
+from utils import init_page
 
-st.title("sb")
+init_page()
+st.title("MAMBACITA")

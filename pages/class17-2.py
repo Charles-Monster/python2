@@ -1,3 +1,6 @@
+from utils import init_page
+
+init_page()
 import streamlit as st
 import os
 st.title("這是標題")
@@ -24,16 +27,15 @@ with st.expander("點擊展開/收起"):
 image_folder="image"
 image_files=os.listdir(image_folder)
 st.write(image_files)
-
-png=st.selectbox("圖片設定",["0.png","1.png","2.png"])
-width=st.selectbox("寬",["300","310","320","330","340","350","360","370","380","390","400"])
+image_width=st.number_input("輸入圖片寬度",value=300,step=10)
+png=st.selectbox("選擇圖片",["0.png","1.png","2.png"])
+st.write(f"你選的圖片是{png}")
 if png=="0.png":
-    st.image("image/0.png",width=300)
+    st.image(f"image/0.png",width=image_width)
 elif png=="1.png":
-    st.image("image/1.png",width=300)
-else:    
-    st.image("image/2.png",width=300)
-
+    st.image(f"image/1.png",width=image_width)
+else:
+    st.image(f"image/2.png",width=image_width)
 st.title("圖片元件")
 st.image("image/0.png",width=300)
 
